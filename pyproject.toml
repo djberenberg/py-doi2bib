@@ -1,0 +1,27 @@
+[project]
+name = "py-doi2bib"
+description = "BibTex from DOI"
+authors = [{name = "djberenberg"}]
+dynamic = ["version", "readme", "dependencies", "optional-dependencies"]
+
+[project.scripts]
+doi2bib = "pydoi2bib:doi2bib"
+
+[build-system]
+requires = ["setuptools>=45", "setuptools_scm[toml]>=6.2"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.in"]}
+readme = {file = "README.md"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools_scm]
+search_parent_directories = true
+version_scheme = "no-guess-dev"
+local_scheme = "node-and-date"
+
+[tool.setuptools.package-data]
+"*" = ["*.yaml", "*.csv.gz", "*.json", "*.tsv.gz", "*.json.gz", "*.obo.gz"]
